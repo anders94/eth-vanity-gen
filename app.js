@@ -27,14 +27,12 @@ if (cluster.isMaster) {
     }
 
     cluster.on('exit', (worker, code, signal) => {
-	console.log(`worker ${worker.process.pid} died - restarting`);
+	//console.log(`worker ${worker.process.pid} died - restarting`);
 	cluster.fork();
 
     });
 }
 else {
-    console.log(`Worker ${process.pid} started`);
-
     let counter = 0;
 
     while (1) {
@@ -43,15 +41,16 @@ else {
 	for (let r=0; r<regexps.length; r++) {
 	    if (wallet.getAddressString().match(regexps[r])) {
 		const o = {address: wallet.getChecksumAddressString(),
-			   privateKey: wallet.getPrivateKeyString(),
-			   process: process.pid,
-			   counter: counter};
+			   privateKey: wallet.getPrivateKeyString()}
 		console.log(o);
 
 	    }
 
 	}
 
+	// this limits unbounded memory usage because node doesn't quite
+	// garbage collect fast enough for this. need to make this dynamic
+	// given free memory rather than a hard-set limit
 	if (counter % 10000 == 0) {
 	    const used = process.memoryUsage();
 	    if (used.rss / 1024 / 1024 > 1024)
