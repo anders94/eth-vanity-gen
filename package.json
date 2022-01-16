@@ -1,0 +1,29 @@
+{
+  "name": "eth-vanity-gen",
+  "version": "1.0.0",
+  "description": "A vanity Ethereum address generator.",
+  "main": "app.js",
+  "dependencies": {
+    "ethereumjs-wallet": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anders94/eth-vanity-gen.git"
+  },
+  "keywords": [
+    "eth",
+    "ethereum",
+    "vanity",
+    "address"
+  ],
+  "author": "Anders Brownworth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anders94/eth-vanity-gen/issues"
+  },
+  "homepage": "https://github.com/anders94/eth-vanity-gen#readme"
+}
